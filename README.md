@@ -3,21 +3,8 @@ Find minimum set from the given set of data
 
 JAVA VERSION: 1.8
 SPRING BOOT VERSION: 2.5.2
-
+===============================================================================
 HOW TO RUN:
-ZIP FILE: WSI.ZIP
-
-Step 1:  Extract WSI.ZIP to WSI folder.
-Step 2:  Open Eclipse or STS
-Step 3:  File -> Import -> Existing Maven Project
-Step 4:  Next -> Browse and select WSI folder
-Step 5:  Finish
-Step 6:  Expand WSI project and select WsiApplication 
-Step 7:  Run as Spring Boot App
-
-Result:
-1.  Input file named inputfile.txt is generated at the root of the project
-2.  Output file named outputfile.txt is generated at the root of the project.
 
 GITHUB REPO:
 https://github.com/srinivas2511/WSI/tree/master
@@ -30,6 +17,10 @@ Step 5:  Finish
 Step 6:  Expand WSI project and select WsiApplication 
 Step 7:  Run as Spring Boot App
 
+Result:
+1.  Input file named inputfile.txt is generated at the root of the project
+2.  Output file named outputfile.txt is generated at the root of the project.
+===============================================================================================
 1. This class is used to generate lower bound number and upper bound number using Random class.
 Class: 
 GenerateUpperAndLowerBoundsNumber.java
