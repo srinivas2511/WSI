@@ -19,8 +19,12 @@ public class WsiApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		formatOutputData.formatOutputData();
 		
+		//data from sources
+		//formatOutputData.formatOutputData();
+		
+		//data from file - fileName= inputsourcefile.txt
+		formatOutputData.formatOutputDataForFile();
 	}
 
 }

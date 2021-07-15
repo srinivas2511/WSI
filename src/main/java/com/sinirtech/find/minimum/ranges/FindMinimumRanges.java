@@ -14,7 +14,7 @@ import com.sinirtech.sort.BubbleSort;
  * @author USER
  *
  */
-public final class FindMinimumRanges {
+public final class FindMinimumRanges implements IFindMinimumRanges{
 
 	private static Logger LOGGER = Logger.getLogger("com.sinirtech.find.minimum.ranges");
 	private List<Integer> lowerBound;
@@ -65,6 +65,7 @@ public final class FindMinimumRanges {
 	/**
 	 * find minimum ranges from different sources of data
 	 */
+	@Override
 	public void findMinimumRangesForSourceData() {
 		lowerBound = new ArrayList<>();
 		upperBound = new ArrayList<>();
@@ -72,6 +73,28 @@ public final class FindMinimumRanges {
 		//prepare data
 		PrepareData pd = new PrepareData(lowerBound, upperBound);
 		pd.populateLowerBoundAndUpperBoundLists();
+		
+		//sort data
+		BubbleSort.bubbleSort(lowerBound, upperBound );
+		
+		//find minimum ranges
+		MinimumRanges.getMinimumRanges(lowerBound, upperBound);
+		
+		LOGGER.info("===============lower bound of minimum ranges==============");
+		lowerBound.forEach(System.out::println);
+		LOGGER.info("===============upper bound of minimum ranges==============");
+		upperBound.forEach(System.out::println);
+		
+	}
+
+	@Override
+	public void findMinimumRangesForFile() {
+		lowerBound = new ArrayList<>();
+		upperBound = new ArrayList<>();
+		
+		//prepare data
+		PrepareData pd = new PrepareData(lowerBound, upperBound);
+		pd.populateLowerBoundAndUpperBoundListsFromFile();
 		
 		//sort data
 		BubbleSort.bubbleSort(lowerBound, upperBound );

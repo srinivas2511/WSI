@@ -18,7 +18,7 @@ import com.sinirtech.find.minimum.ranges.FindMinimumRanges;
  *
  */
 @Component
-public final class FormatOutputData {
+public final class FormatOutputData implements IFormatOutputData{
 
 	private static Logger LOGGER = Logger.getLogger("com.sinirtech.format.output");
 	private static final String fileName = "outputfile.txt";
@@ -32,8 +32,9 @@ public final class FormatOutputData {
 	}
 	
 	/**
-	 * Format output data and write to file
+	 * Format output data and write to file (from sources)
 	 */
+	@Override
 	public void formatOutputData() {
 		FindMinimumRanges findMinimumRanges = new FindMinimumRanges();
 		List<String> finalOutputData = new ArrayList<>();
@@ -68,6 +69,47 @@ public final class FormatOutputData {
 				LOGGER.severe(e.getMessage());
 			}
 		}
+	}
+
+	/**
+	 * Format output data and write to file (from file)
+	 */
+	@Override
+	public void formatOutputDataForFile() {
+		FindMinimumRanges findMinimumRanges = new FindMinimumRanges();
+		List<String> finalOutputData = new ArrayList<>();
+		//find minimum ranges
+		findMinimumRanges.findMinimumRangesForFile();
+		
+		List<Integer> lowerBound = findMinimumRanges.getLowerBound();
+		List<Integer> upperBound = findMinimumRanges.getUpperBound();
+		
+		for(int i = 0; i < lowerBound.size(); i++) {
+			int lower = lowerBound.get(i);
+			int upper = upperBound.get(i);
+			
+			String data = "["+lower+", "+upper+"]";
+			finalOutputData.add(data);
+			
+		}
+		
+		LOGGER.info("===============output data================");
+		finalOutputData.forEach(LOGGER::info);
+		//write to file
+		BufferedWriter writer = null;
+		try {
+			writer = new BufferedWriter(new FileWriter(fileName));
+			writer.write(finalOutputData.toString());
+		} catch (IOException e) {
+			LOGGER.severe(e.getMessage());
+		} finally {
+			 try {
+				writer.close();
+			} catch (IOException e) {
+				LOGGER.severe(e.getMessage());
+			}
+		}
+		
 	}
 
 }
