@@ -47,10 +47,13 @@ FileName:
 inputfile.txt
 
 4. Prepare data for finding minimum ranges.  Populate lower bound and upper bound array list.
+Interface:
+IPrepareData.java
 Class: 
 PrepareData.java
-Method: 
+Methods: 
 public void populateLowerBoundAndUpperBoundLists()
+public void populateLowerBoundAndUpperBoundListsFromFile();
 
 5. Sort lower bound data obtained from different sources and corresponding change to upper bound data
 Class: 
@@ -65,17 +68,27 @@ Method:
 public static void getMinimumRanges(List<Integer> lowerBound, List<Integer> upperBound)
 
 7. Find minimum ranges from different sources of data
+Interface:
+IFindMinimumRanges.java
 Class:
 FindMinimumRanges.java
-Method:
+Methods:
 public void findMinimumRangesForSourceData()
-
+public void findMinimumRangesForFile();
+  
 8. Format output data and write to file
+Interface:
+IFormatOutputData.java
 Class:
 FormatOutputData.java
-Method:
+Methods:
 public void formatOutputData()
+public void formatOutputDataForFile();
 FileName:
 outputfile.txt
 
+We can also read data from file inputsourcefile.txt and find the minimum set using:
+Class: WsiApplication
+//data from file - fileName= inputsourcefile.txt
+formatOutputData.formatOutputDataForFile();
 
